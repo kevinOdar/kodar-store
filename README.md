@@ -1,9 +1,10 @@
 # kodar-store
 
-React project
+## React project
 
 Upcoming features:
--Payment
--Login
--Save cart items on the local storage
--Filter products
+
+- Payment
+- Login
+- Save cart items on the local storage
+- Filter products
