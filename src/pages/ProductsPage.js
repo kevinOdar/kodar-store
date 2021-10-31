@@ -11,7 +11,8 @@ import Error from '../components/Error';
 import Products from '../components/Products';
 import Spinner from '../components/Spinner';
 import VerticalNav from '../components/VerticalNav';
-import { useGlobalContext } from '../context/products_context';
+import { useGlobalContext as useGlobalContextProducts } from '../context/products_context';
+import { useGlobalContext as useGlobalContextFilter } from '../context/filter_context';
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,12 +58,13 @@ const Wrapper = styled.div`
         }
       }
     }
-
   }
 `;
 
 const ProductsPage = () => {
-  const { products, products_loading, products_error } = useGlobalContext();
+  const { products_loading, products_error } = useGlobalContextProducts();
+  const { filtered_products, options, selection, changeFilters } =
+    useGlobalContextFilter();
   const listCriteries = [
     'price (lowest)',
     'price (highest)',
@@ -72,15 +74,17 @@ const ProductsPage = () => {
 
   const [selectGridIcon, setSelectGridIcon] = useState(true);
 
-  if (products_loading) {
-    return <Spinner />;
-  }
+  if (products_loading) return <Spinner />;
 
   return (
     <>
       <Breadcrumb finalPath="products" />
       <Wrapper className="section-center">
-        <VerticalNav />
+        <VerticalNav
+          options={options}
+          selection={selection}
+          changeFilters={changeFilters}
+        />
 
         <div className="products-container">
           <div className="header">
@@ -110,7 +114,7 @@ const ProductsPage = () => {
           {products_error ? (
             <Error />
           ) : (
-            <Products products={products} />
+            <Products products={filtered_products} />
           )}
         </div>
       </Wrapper>

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useGlobalContext } from '../context/products_context';
 import Button from '../components/Button';
 import Colors from '../components/ColorsWithParameter';
+import { formatPrice } from '../utils/helpers';
 
-const Div = styled.div`
+const Wrapper = styled.div`
   height: 100vh;
   /* width: 20vw; */
   flex-basis: 20%;
@@ -57,7 +57,6 @@ const Div = styled.div`
 
   button {
     padding: 0.2rem 0.5rem;
-    /* letter-spacing: 0; */
     text-transform: lowercase;
     display: block;
   }
@@ -90,25 +89,13 @@ const Div = styled.div`
   }
 `;
 
-const VerticalNav = () => {
-  const { products } = useGlobalContext();
-  const companies = new Set();
-  const categories = new Set();
-  categories.add('All');
-  companies.add('All');
-  const colorsSet = new Set();
-  products.forEach(({ company, category, colors }) => {
-    categories.add(category);
-    companies.add(company);
-    colors.forEach((color) => {
-      colorsSet.add(color);
-    });
-  });
-  const [price, setPrice] = useState(1000);
-  const [selectedOptionColor, setSelectedOptionColor] = useState(true);
-
+const VerticalNav = ({
+  options: { categories, companies, colors, highestPrice },
+  selection,
+  changeFilters,
+}) => {
   return (
-    <Div>
+    <Wrapper>
       <form className="search">
         <input type="text" placeholder="Search" />
       </form>
@@ -116,13 +103,29 @@ const VerticalNav = () => {
       <ul className="category">
         <h5>Category</h5>
         {[...categories].map((category, index) => (
-          <li key={index}>{category}</li>
+          <li
+            key={index}
+            onClick={(e) =>
+              changeFilters({ ...selection, selectedCategory: category })
+            }
+          >
+            {category}
+          </li>
         ))}
       </ul>
 
       <form className="company">
         <label htmlFor="companies">Company</label>
-        <select name="companies" id="companies">
+        <select
+          name="companies"
+          id="companies"
+          onChange={(e) =>
+            changeFilters({
+              ...selection,
+              selectedCompany: e.target.value,
+            })
+          }
+        >
           {[...companies].map((company, index) => (
             <option value={company} key={index}>
               {company}
@@ -135,44 +138,55 @@ const VerticalNav = () => {
         <h5>Colors</h5>
         <li
           style={{
-            textDecoration: selectedOptionColor ? 'underline' : 'none',
+            textDecoration:
+              selection.selectedColor === 'all' ? 'underline' : 'none',
           }}
-          onClick={() => setSelectedOptionColor(true)}
+          onClick={() => changeFilters({ ...selection, selectedColor: 'all' })}
         >
           All
         </li>
         <Colors
           className="color-icon"
-          colors={[...colorsSet]}
-          selectedOptionColor={selectedOptionColor}
-          setSelectedOptionColor={setSelectedOptionColor}
-        ></Colors>
+          colors={[...colors]}
+          changeFilters={changeFilters}
+          selection={selection}
+        />
       </div>
 
       <form className="price">
         <label htmlFor="price">Price</label>
-        <p>${price}</p>
+        <p>{formatPrice(selection.selectedPrice)}</p>
         <input
           type="range"
           name="price"
           id="price"
           min="0.00"
-          max="3099.99"
-          step="0.01"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          max={highestPrice}
+          step="1.00"
+          value={selection.selectedPrice}
+          onChange={(e) =>
+            changeFilters({
+              ...selection,
+              selectedPrice: parseInt(e.target.value),
+            })
+          }
         />
       </form>
 
       <form className="shipping">
-        <label htmlFor="shipping">
-          Free Shipping
-        </label>
-        <input type="checkbox" name="shipping" id="shipping" />
+        <label htmlFor="shipping">Free Shipping</label>
+        <input
+          type="checkbox"
+          name="shipping"
+          id="shipping"
+          onClick={(e) =>
+            changeFilters({ ...selection, shipping: e.target.checked })
+          }
+        />
       </form>
 
       <Button>Clear Filters</Button>
-    </Div>
+    </Wrapper>
   );
 };
 

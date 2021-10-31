@@ -7,14 +7,6 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
 } from '../actions';
 
-// const initialState = {
-//   category: 'all',
-//   company: 'all',
-//   color: 'all',
-//   price: 3099,
-//   shipping: false,
-// };
-
 const product_reducer = (state, action) => {
   switch (action.type) {
     case GET_SINGLE_PRODUCT_BEGIN:

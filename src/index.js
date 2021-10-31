@@ -5,14 +5,16 @@ import App from './App';
 import { ProductsProvider } from './context/products_context';
 import { SidebarProvider } from './context/sidebar_context';
 import { CartProvider } from './context/cart_context';
+import { FilterProvider } from './context/filter_context';
 
 ReactDOM.render(
-
   <SidebarProvider>
     <ProductsProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
+      <FilterProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </FilterProvider>
     </ProductsProvider>
   </SidebarProvider>,
 

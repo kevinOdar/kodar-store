@@ -12,8 +12,8 @@ const cart_reducer = (state, action) => {
       if (
         state.products.find(
           (productInCart) =>
-            productInCart.id === product.id &&
-            productInCart.selectedColor === selectedColor
+            (productInCart.id === product.id) &&
+            (productInCart.selectedColor === selectedColor)
         )
       ) {
         const products = state.products.map((productInCart) => {

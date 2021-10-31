@@ -41,7 +41,7 @@ const ProductsProvider = ({ children }) => {
     try {
       const response = await fetch(products_url);
       const products = await response.json();
-      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: { products: products } });
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: { products } });
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR });
     }
