@@ -87,6 +87,15 @@ const Wrapper = styled.div`
       margin-top: 0;
     }
   }
+
+  .selected {
+    text-decoration: underline;
+    opacity: 1;
+  }
+
+  .not-selected {
+    opacity: 0.6;
+  }
 `;
 
 const VerticalNav = ({
@@ -104,6 +113,11 @@ const VerticalNav = ({
         <h5>Category</h5>
         {[...categories].map((category, index) => (
           <li
+            className={
+              selection.selectedCategory === category
+                ? 'selected'
+                : 'not-selected'
+            }
             key={index}
             onClick={(e) =>
               changeFilters({ ...selection, selectedCategory: category })
@@ -137,10 +151,9 @@ const VerticalNav = ({
       <div className="colors">
         <h5>Colors</h5>
         <li
-          style={{
-            textDecoration:
-              selection.selectedColor === 'all' ? 'underline' : 'none',
-          }}
+          className={
+            selection.selectedColor === 'all' ? 'selected' : 'not-selected'
+          }
           onClick={() => changeFilters({ ...selection, selectedColor: 'all' })}
         >
           All
