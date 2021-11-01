@@ -8,7 +8,7 @@ import {
 import styled from 'styled-components';
 import Breadcrumb from '../components/Breadcrumb';
 import Error from '../components/Error';
-import Products from '../components/Products';
+import GridProducts from '../components/GridProducts';
 import Spinner from '../components/Spinner';
 import VerticalNav from '../components/VerticalNav';
 import { useGlobalContext as useGlobalContextProducts } from '../context/products_context';
@@ -116,7 +116,7 @@ const ProductsPage = () => {
           {products_error ? (
             <Error />
           ) : (
-            <Products products={filtered_products} />
+            <GridProducts products={filtered_products} />
           )}
         </div>
       </Wrapper>

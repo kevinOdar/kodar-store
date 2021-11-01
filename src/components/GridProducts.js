@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Products = ({ products }) => {
+const GridProducts = ({ products }) => {
   return (
     <Wrapper>
       {products.map((product) => (
@@ -29,4 +29,4 @@ const Products = ({ products }) => {
   );
 };
 
-export default Products;
+export default GridProducts;

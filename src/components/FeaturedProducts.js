@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/products_context';
 import Spinner from './Spinner';
 import Error from './Error';
-import Products from './Products';
+import GridProducts from './GridProducts';
 
 const Wrapper = styled.div`
   background-color: var(--clr-grey-10);
@@ -45,7 +45,7 @@ const FeaturedProducts = () => {
           <h2>Featured Products</h2>
           <div className="underline"></div>
         </div>
-        <Products products={featured_products.slice(0, 3)} />
+        <GridProducts products={featured_products.slice(0, 3)} />
         <Link to="/products">
           <Button>All products</Button>
         </Link>
