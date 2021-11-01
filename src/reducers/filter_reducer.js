@@ -1,4 +1,9 @@
-import { CLEAR_FILTERS, LOAD_PRODUCTS, UPDATE_FILTERS } from '../actions';
+import {
+  CLEAR_FILTERS,
+  FILTER_PRODUCTS,
+  LOAD_PRODUCTS,
+  UPDATE_FILTERS,
+} from '../actions';
 
 const filter_reducer = (state, action) => {
   switch (action.type) {
@@ -48,13 +53,34 @@ const filter_reducer = (state, action) => {
       return {
         ...state,
         selection: {
-          selectedCategory: 'all',
-          selectedCompany: 'all',
-          selectedColor: 'all',
-          shipping: false,
+          ...action.payload.initialSelection,
           selectedPrice: state.options.highestPrice,
         },
       };
+
+    case FILTER_PRODUCTS:
+      const {
+        selection: {
+          selectedCategory,
+          selectedCompany,
+          selectedColor,
+          shipping: selectedShipping,
+          selectedPrice,
+          searchedName,
+        },
+      } = state;
+      const filtered_products = action.payload.products.filter(
+        ({ company, category, colors, shipping, price, name }) =>
+          (selectedCompany !== 'all' ? selectedCompany === company : true) &&
+          (selectedCategory !== 'all' ? selectedCategory === category : true) &&
+          (selectedColor !== 'all'
+            ? colors.some((color) => selectedColor === color)
+            : true) &&
+          (selectedShipping ? shipping : true) &&
+          price <= selectedPrice &&
+          name.startsWith(searchedName)
+      );
+      return { ...state, filtered_products };
     default:
       break;
   }
