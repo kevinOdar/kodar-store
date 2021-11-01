@@ -113,7 +113,17 @@ const VerticalNav = ({
   return (
     <Wrapper>
       <form className="search">
-        <input type="text" placeholder="Search" />
+        <input
+          type="text"
+          placeholder="Search"
+          value={selection.searchedName}
+          onChange={(e) =>
+            changeFilters({
+              ...selection,
+              searchedName: e.target.value,
+            })
+          }
+        />
       </form>
 
       <ul className="category">

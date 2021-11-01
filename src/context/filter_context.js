@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { CLEAR_FILTERS, LOAD_PRODUCTS, UPDATE_FILTERS } from '../actions';
+import {
+  CLEAR_FILTERS,
+  FILTER_PRODUCTS,
+  LOAD_PRODUCTS,
+  UPDATE_FILTERS,
+} from '../actions';
 import { useGlobalContext as useGlobalContextProduct } from '../context/products_context';
 import filter_reducer from '../reducers/filter_reducer';
 
@@ -20,6 +25,7 @@ let initialState = {
     selectedColor: 'all',
     shipping: false,
     selectedPrice: 0,
+    searchedName: '',
   },
 };
 
@@ -31,12 +37,17 @@ const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: { products } });
   }, [products]);
 
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS, payload: { products } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.selection]);
+
   const changeFilters = (selection) => {
     dispatch({ type: UPDATE_FILTERS, payload: { selection } });
   };
 
   const clearFilters = () => {
-    dispatch({ type: CLEAR_FILTERS });
+    dispatch({ type: CLEAR_FILTERS, payload: { initialSelection: initialState.selection } });
   };
 
   return (
