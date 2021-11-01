@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { LOAD_PRODUCTS, UPDATE_FILTERS } from '../actions';
+import { CLEAR_FILTERS, LOAD_PRODUCTS, UPDATE_FILTERS } from '../actions';
 import { useGlobalContext as useGlobalContextProduct } from '../context/products_context';
 import filter_reducer from '../reducers/filter_reducer';
 
@@ -35,8 +35,12 @@ const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_FILTERS, payload: { selection } });
   };
 
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
+
   return (
-    <FilterContext.Provider value={{ ...state, changeFilters }}>
+    <FilterContext.Provider value={{ ...state, changeFilters, clearFilters }}>
       {children}
     </FilterContext.Provider>
   );

@@ -63,8 +63,9 @@ const Wrapper = styled.div`
 
 const ProductsPage = () => {
   const { products_loading, products_error } = useGlobalContextProducts();
-  const { filtered_products, options, selection, changeFilters } =
+  const { filtered_products, options, selection, changeFilters, clearFilters } =
     useGlobalContextFilter();
+
   const listCriteries = [
     'price (lowest)',
     'price (highest)',
@@ -84,6 +85,7 @@ const ProductsPage = () => {
           options={options}
           selection={selection}
           changeFilters={changeFilters}
+          clearFilters={clearFilters}
         />
 
         <div className="products-container">
@@ -98,7 +100,7 @@ const ProductsPage = () => {
                 <RiFileListFill />
               </div>
             </div>
-            <p>23 Products Found</p>
+            <p>{filtered_products.length} Products Found</p>
             <hr />
             <form className="sort">
               <label htmlFor="criteries">Sort By</label>

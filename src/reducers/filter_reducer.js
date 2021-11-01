@@ -1,4 +1,4 @@
-import { LOAD_PRODUCTS, UPDATE_FILTERS } from '../actions';
+import { CLEAR_FILTERS, LOAD_PRODUCTS, UPDATE_FILTERS } from '../actions';
 
 const filter_reducer = (state, action) => {
   switch (action.type) {
@@ -6,10 +6,10 @@ const filter_reducer = (state, action) => {
       const { products } = action.payload;
 
       const tempCompanies = new Set();
-      tempCompanies.add('All');
+      tempCompanies.add('all');
 
       const tempCategories = new Set();
-      tempCategories.add('All');
+      tempCategories.add('all');
 
       const tempColors = new Set();
 
@@ -43,6 +43,18 @@ const filter_reducer = (state, action) => {
 
     case UPDATE_FILTERS:
       return { ...state, selection: action.payload.selection };
+
+    case CLEAR_FILTERS:
+      return {
+        ...state,
+        selection: {
+          selectedCategory: 'all',
+          selectedCompany: 'all',
+          selectedColor: 'all',
+          shipping: false,
+          selectedPrice: state.options.highestPrice,
+        },
+      };
     default:
       break;
   }

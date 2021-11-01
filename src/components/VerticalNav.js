@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import Colors from '../components/ColorsWithParameter';
@@ -102,7 +102,14 @@ const VerticalNav = ({
   options: { categories, companies, colors, highestPrice },
   selection,
   changeFilters,
+  clearFilters,
 }) => {
+  const refCheckbox = useRef(null);
+
+  useEffect(() => {
+    refCheckbox.current.checked = selection.shipping;
+  });
+
   return (
     <Wrapper>
       <form className="search">
@@ -139,6 +146,7 @@ const VerticalNav = ({
               selectedCompany: e.target.value,
             })
           }
+          value={selection.selectedCompany}
         >
           {[...companies].map((company, index) => (
             <option value={company} key={index}>
@@ -192,13 +200,16 @@ const VerticalNav = ({
           type="checkbox"
           name="shipping"
           id="shipping"
+          ref={refCheckbox}
           onClick={(e) =>
             changeFilters({ ...selection, shipping: e.target.checked })
           }
         />
       </form>
-
-      <Button>Clear Filters</Button>
+      {/*  */}
+      <div onClick={() => clearFilters()}>
+        <Button>Clear Filters</Button>
+      </div>
     </Wrapper>
   );
 };
