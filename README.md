@@ -6,6 +6,7 @@ Features:
 
 - Filtering products
 - Adding products to the cart
+- We can view the products on a grid style or a list style
 
 Upcoming features:
 

@@ -2,6 +2,8 @@ import {
   CLEAR_FILTERS,
   FILTER_PRODUCTS,
   LOAD_PRODUCTS,
+  SET_GRIDVIEW,
+  SET_LISTVIEW,
   UPDATE_FILTERS,
 } from '../actions';
 
@@ -81,6 +83,12 @@ const filter_reducer = (state, action) => {
           name.startsWith(searchedName)
       );
       return { ...state, filtered_products };
+
+    case SET_GRIDVIEW:
+      return { ...state, grid_view: true };
+
+    case SET_LISTVIEW:
+      return { ...state, grid_view: false };
     default:
       break;
   }

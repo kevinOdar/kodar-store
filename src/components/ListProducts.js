@@ -3,11 +3,25 @@ import styled from 'styled-components';
 import Product from './Product';
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
+  flex-direction: column;
+  row-gap: 4rem;
+  padding: 2rem 0;
+  .product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
+    .img-container {
+      flex-basis: 33%;
+    }
+
+    .product-description {
+      flex-basis: 67%;
+    }
+  }
   .img-container {
-    position: relative;
+    /* position: relative; */
 
     .product-img {
       width: 100%;
@@ -15,7 +29,7 @@ const Wrapper = styled.div`
       object-fit: cover;
     }
 
-    &:hover {
+    /* &:hover {
       .product-img {
         filter: brightness(0.55);
         transition: filter 0.6s;
@@ -24,62 +38,61 @@ const Wrapper = styled.div`
       svg {
         display: block;
       }
-    }
+    } */
 
     svg {
       display: none;
-      position: absolute;
+      /* position: absolute;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
+
       color: white;
       font-size: xx-large;
       background-color: var(--clr-primary-5);
       padding: 0.3rem;
-      border-radius: 50%;
+      border-radius: 50%; */
     }
   }
 
   .product-description {
-    padding: 0.5rem 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2rem;
+    > * {
+      margin: 0.4rem 0;
+    }
 
     p {
       letter-spacing: var(--spacing);
+      /* margin-bottom: 0; */
     }
 
     .product-name {
       color: var(--clr-grey-1);
+      font-weight: bolder;
+      text-transform: capitalize;
+      font-size: 1.5rem;
     }
 
     .product-price {
-      color: var(--clr-primary-5);
+      color: var(--clr-primary-6);
+      font-weight: bolder;
     }
 
     .product-descr {
-      display: none;
+      font-size: 0.8rem;
     }
 
-    a {
-      display: none;
+    button {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.5rem;
     }
-  }
-
-  @media screen and (min-width: 760px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 2.5rem;
-  }
-
-  @media screen and (min-width: 1100px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 2rem;
   }
 `;
 
-const GridProducts = ({ products }) => {
+const ListProducts = ({ products }) => {
   return (
     <Wrapper>
       {products.map((product) => (
@@ -89,4 +102,4 @@ const GridProducts = ({ products }) => {
   );
 };
 
-export default GridProducts;
+export default ListProducts;

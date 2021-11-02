@@ -3,6 +3,8 @@ import {
   CLEAR_FILTERS,
   FILTER_PRODUCTS,
   LOAD_PRODUCTS,
+  SET_GRIDVIEW,
+  SET_LISTVIEW,
   UPDATE_FILTERS,
 } from '../actions';
 import { useGlobalContext as useGlobalContextProduct } from '../context/products_context';
@@ -13,6 +15,7 @@ const FilterContext = createContext();
 let initialState = {
   filtered_products: [],
   products: [],
+  grid_view: true,
   options: {
     categories: new Set(),
     companies: new Set(),
@@ -39,19 +42,37 @@ const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: FILTER_PRODUCTS, payload: { products } });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.selection]);
+  }, [state.selection, products]);
 
   const changeFilters = (selection) => {
     dispatch({ type: UPDATE_FILTERS, payload: { selection } });
   };
 
   const clearFilters = () => {
-    dispatch({ type: CLEAR_FILTERS, payload: { initialSelection: initialState.selection } });
+    dispatch({
+      type: CLEAR_FILTERS,
+      payload: { initialSelection: initialState.selection },
+    });
+  };
+
+  const setGridview = () => {
+    dispatch({ type: SET_GRIDVIEW });
+  };
+
+  const setListview = () => {
+    dispatch({ type: SET_LISTVIEW });
   };
 
   return (
-    <FilterContext.Provider value={{ ...state, changeFilters, clearFilters }}>
+    <FilterContext.Provider
+      value={{
+        ...state,
+        changeFilters,
+        clearFilters,
+        setGridview,
+        setListview,
+      }}
+    >
       {children}
     </FilterContext.Provider>
   );

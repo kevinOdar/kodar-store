@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   RiLayoutGridFill,
   RiLayoutGridLine,
@@ -8,11 +8,11 @@ import {
 import styled from 'styled-components';
 import Breadcrumb from '../components/Breadcrumb';
 import Error from '../components/Error';
-import GridProducts from '../components/GridProducts';
 import Spinner from '../components/Spinner';
 import VerticalNav from '../components/VerticalNav';
 import { useGlobalContext as useGlobalContextProducts } from '../context/products_context';
 import { useGlobalContext as useGlobalContextFilter } from '../context/filter_context';
+import ViewProducts from '../components/ViewProducts';
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      padding-bottom: 1rem;
+      /* padding-bottom: 1rem; */
 
       .icons {
         font-size: x-large;
@@ -63,8 +63,16 @@ const Wrapper = styled.div`
 
 const ProductsPage = () => {
   const { products_loading, products_error } = useGlobalContextProducts();
-  const { filtered_products, options, selection, changeFilters, clearFilters } =
-    useGlobalContextFilter();
+  const {
+    filtered_products,
+    options,
+    selection,
+    changeFilters,
+    clearFilters,
+    setGridview,
+    setListview,
+    grid_view,
+  } = useGlobalContextFilter();
 
   const listCriteries = [
     'price (lowest)',
@@ -72,8 +80,6 @@ const ProductsPage = () => {
     'name (a - z)',
     'name (z - a)',
   ];
-
-  const [selectGridIcon, setSelectGridIcon] = useState(true);
 
   if (products_loading) return <Spinner />;
 
@@ -91,12 +97,12 @@ const ProductsPage = () => {
         <div className="products-container">
           <div className="header">
             <div className="icons">
-              <div className={selectGridIcon ? 'active' : ''}>
+              <div className={grid_view ? 'active' : ''}>
                 <RiLayoutGridFill />
-                <RiFileListLine onClick={() => setSelectGridIcon(false)} />
+                <RiFileListLine onClick={() => setListview()} />
               </div>
-              <div className={!selectGridIcon ? 'active' : ''}>
-                <RiLayoutGridLine onClick={() => setSelectGridIcon(true)} />
+              <div className={!grid_view ? 'active' : ''}>
+                <RiLayoutGridLine onClick={() => setGridview()} />
                 <RiFileListFill />
               </div>
             </div>
@@ -113,11 +119,7 @@ const ProductsPage = () => {
               </select>
             </form>
           </div>
-          {products_error ? (
-            <Error />
-          ) : (
-            <GridProducts products={filtered_products} />
-          )}
+          {products_error ? <Error /> : <ViewProducts />}
         </div>
       </Wrapper>
     </>
