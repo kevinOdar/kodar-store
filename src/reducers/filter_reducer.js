@@ -110,7 +110,7 @@ const filter_reducer = (state, action) => {
               }
             }
           }
-          return { ...state };
+          break;
         case 'price (highest)':
           for (let i = 0; i < state.filtered_products.length - 1; i++) {
             for (let i = 0; i < state.filtered_products.length - 1; i++) {
@@ -124,14 +124,41 @@ const filter_reducer = (state, action) => {
               }
             }
           }
-          // console.log(state.filtered_products);
-          return { ...state };
+          break;
+        case 'name (a - z)':
+          for (let i = 0; i < state.filtered_products.length - 1; i++) {
+            for (let i = 0; i < state.filtered_products.length - 1; i++) {
+              const name1 = state.filtered_products[i].name;
+              const name2 = state.filtered_products[i + 1].name;
+
+              if (name1.localeCompare(name2) === 1) {
+                const newElement = state.filtered_products[i];
+                state.filtered_products[i] = state.filtered_products[i + 1];
+                state.filtered_products[i + 1] = newElement;
+              }
+            }
+          }
+          break;
+        case 'name (z - a)':
+          for (let i = 0; i < state.filtered_products.length - 1; i++) {
+            for (let i = 0; i < state.filtered_products.length - 1; i++) {
+              const name1 = state.filtered_products[i].name;
+              const name2 = state.filtered_products[i + 1].name;
+
+              if (name1.localeCompare(name2) === -1) {
+                const newElement = state.filtered_products[i];
+                state.filtered_products[i] = state.filtered_products[i + 1];
+                state.filtered_products[i + 1] = newElement;
+              }
+            }
+          }
+          break;
         default:
           break;
       }
-      break;
+      return { ...state };
+
     case UPDATE_SORT:
-      console.log(action.payload.sort);
       return { ...state, selectedSortOption: action.payload.sort };
     default:
       break;
