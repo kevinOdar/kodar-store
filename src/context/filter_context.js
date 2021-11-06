@@ -5,6 +5,7 @@ import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
   SET_LISTVIEW,
+  SORT_PRODUCTS,
   UPDATE_FILTERS,
 } from '../actions';
 import { useGlobalContext as useGlobalContextProduct } from '../context/products_context';
@@ -30,6 +31,13 @@ let initialState = {
     selectedPrice: 0,
     searchedName: '',
   },
+  sort_options: [
+    'price (lowest)',
+    'price (highest)',
+    'name (a - z)',
+    'name (z - a)',
+  ],
+  selectedSortOption: 'price (lowest)',
 };
 
 const FilterProvider = ({ children }) => {
@@ -43,6 +51,10 @@ const FilterProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: FILTER_PRODUCTS, payload: { products } });
   }, [state.selection, products]);
+
+  useEffect(() => {
+    dispatch({ type: SORT_PRODUCTS });
+  }, [state.selectedSortOption, state.filtered_products]);
 
   const changeFilters = (selection) => {
     dispatch({ type: UPDATE_FILTERS, payload: { selection } });

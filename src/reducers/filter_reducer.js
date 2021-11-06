@@ -4,6 +4,7 @@ import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
   SET_LISTVIEW,
+  SORT_PRODUCTS,
   UPDATE_FILTERS,
 } from '../actions';
 
@@ -82,13 +83,39 @@ const filter_reducer = (state, action) => {
           price <= selectedPrice &&
           name.startsWith(searchedName)
       );
-      return { ...state, filtered_products };
+      return {
+        ...state,
+        filtered_products,
+      };
 
     case SET_GRIDVIEW:
       return { ...state, grid_view: true };
 
     case SET_LISTVIEW:
       return { ...state, grid_view: false };
+
+    case SORT_PRODUCTS:
+      switch (state.selectedSortOption) {
+        case 'price (lowest)':
+          for (let i = 0; i < state.filtered_products.length - 1; i++) {
+            for (let i = 0; i < state.filtered_products.length - 1; i++) {
+              const price1 = state.filtered_products[i].price;
+              const price2 = state.filtered_products[i + 1].price;
+
+              if (price1 > price2) {
+                const newElement = state.filtered_products[i];
+                state.filtered_products[i] = state.filtered_products[i + 1];
+                state.filtered_products[i + 1] = newElement;
+              }
+            }
+          }
+          return { ...state };
+
+        default:
+          break;
+      }
+      break;
+
     default:
       break;
   }
