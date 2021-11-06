@@ -6,6 +6,7 @@ import {
   SET_LISTVIEW,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
+  UPDATE_SORT,
 } from '../actions';
 
 const filter_reducer = (state, action) => {
@@ -110,12 +111,28 @@ const filter_reducer = (state, action) => {
             }
           }
           return { ...state };
+        case 'price (highest)':
+          for (let i = 0; i < state.filtered_products.length - 1; i++) {
+            for (let i = 0; i < state.filtered_products.length - 1; i++) {
+              const price1 = state.filtered_products[i].price;
+              const price2 = state.filtered_products[i + 1].price;
 
+              if (price1 < price2) {
+                const newElement = state.filtered_products[i];
+                state.filtered_products[i] = state.filtered_products[i + 1];
+                state.filtered_products[i + 1] = newElement;
+              }
+            }
+          }
+          // console.log(state.filtered_products);
+          return { ...state };
         default:
           break;
       }
       break;
-
+    case UPDATE_SORT:
+      console.log(action.payload.sort);
+      return { ...state, selectedSortOption: action.payload.sort };
     default:
       break;
   }

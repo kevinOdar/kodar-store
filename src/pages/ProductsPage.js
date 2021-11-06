@@ -72,6 +72,7 @@ const ProductsPage = () => {
     setGridview,
     setListview,
     grid_view,
+    updateSort,
   } = useGlobalContextFilter();
 
   const listCriteries = [
@@ -110,7 +111,11 @@ const ProductsPage = () => {
             <hr />
             <form className="sort">
               <label htmlFor="criteries">Sort By</label>
-              <select name="criteries" id="criteries">
+              <select
+                name="criteries"
+                id="criteries"
+                onChange={(e) => updateSort(e.target.value)}
+              >
                 {listCriteries.map((critery, index) => (
                   <option value={critery} key={index}>
                     {critery}

@@ -7,6 +7,7 @@ import {
   SET_LISTVIEW,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
+  UPDATE_SORT,
 } from '../actions';
 import { useGlobalContext as useGlobalContextProduct } from '../context/products_context';
 import filter_reducer from '../reducers/filter_reducer';
@@ -60,6 +61,10 @@ const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_FILTERS, payload: { selection } });
   };
 
+  const updateSort = (sort) => {
+    dispatch({ type: UPDATE_SORT, payload: { sort } });
+  };
+
   const clearFilters = () => {
     dispatch({
       type: CLEAR_FILTERS,
@@ -83,6 +88,7 @@ const FilterProvider = ({ children }) => {
         clearFilters,
         setGridview,
         setListview,
+        updateSort,
       }}
     >
       {children}
