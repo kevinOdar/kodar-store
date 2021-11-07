@@ -96,67 +96,32 @@ const filter_reducer = (state, action) => {
       return { ...state, grid_view: false };
 
     case SORT_PRODUCTS:
+      let sortedProducts = [...state.filtered_products];
       switch (state.selectedSortOption) {
         case 'price (lowest)':
-          for (let i = 0; i < state.filtered_products.length - 1; i++) {
-            for (let i = 0; i < state.filtered_products.length - 1; i++) {
-              const price1 = state.filtered_products[i].price;
-              const price2 = state.filtered_products[i + 1].price;
-
-              if (price1 > price2) {
-                const newElement = state.filtered_products[i];
-                state.filtered_products[i] = state.filtered_products[i + 1];
-                state.filtered_products[i + 1] = newElement;
-              }
-            }
-          }
+          sortedProducts.sort(
+            (product, nextProduct) => product.price - nextProduct.price
+          );
           break;
         case 'price (highest)':
-          for (let i = 0; i < state.filtered_products.length - 1; i++) {
-            for (let i = 0; i < state.filtered_products.length - 1; i++) {
-              const price1 = state.filtered_products[i].price;
-              const price2 = state.filtered_products[i + 1].price;
-
-              if (price1 < price2) {
-                const newElement = state.filtered_products[i];
-                state.filtered_products[i] = state.filtered_products[i + 1];
-                state.filtered_products[i + 1] = newElement;
-              }
-            }
-          }
+          sortedProducts.sort(
+            (product, nextProduct) => nextProduct.price - product.price
+          );
           break;
         case 'name (a - z)':
-          for (let i = 0; i < state.filtered_products.length - 1; i++) {
-            for (let i = 0; i < state.filtered_products.length - 1; i++) {
-              const name1 = state.filtered_products[i].name;
-              const name2 = state.filtered_products[i + 1].name;
-
-              if (name1.localeCompare(name2) === 1) {
-                const newElement = state.filtered_products[i];
-                state.filtered_products[i] = state.filtered_products[i + 1];
-                state.filtered_products[i + 1] = newElement;
-              }
-            }
-          }
+          sortedProducts.sort((product, nextProduct) =>
+            product.name.localeCompare(nextProduct.name)
+          );
           break;
         case 'name (z - a)':
-          for (let i = 0; i < state.filtered_products.length - 1; i++) {
-            for (let i = 0; i < state.filtered_products.length - 1; i++) {
-              const name1 = state.filtered_products[i].name;
-              const name2 = state.filtered_products[i + 1].name;
-
-              if (name1.localeCompare(name2) === -1) {
-                const newElement = state.filtered_products[i];
-                state.filtered_products[i] = state.filtered_products[i + 1];
-                state.filtered_products[i + 1] = newElement;
-              }
-            }
-          }
+          sortedProducts.sort((product, nextProduct) =>
+            nextProduct.name.localeCompare(product.name)
+          );
           break;
         default:
           break;
       }
-      return { ...state };
+      return { ...state, filtered_products: sortedProducts };
 
     case UPDATE_SORT:
       return { ...state, selectedSortOption: action.payload.sort };

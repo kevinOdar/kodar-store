@@ -55,7 +55,7 @@ const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: SORT_PRODUCTS });
-  }, [state.selectedSortOption, state.filtered_products]);
+  }, [state.selectedSortOption, products]);
 
   const changeFilters = (selection) => {
     dispatch({ type: UPDATE_FILTERS, payload: { selection } });

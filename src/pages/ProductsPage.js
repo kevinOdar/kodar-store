@@ -100,10 +100,10 @@ const ProductsPage = () => {
             <div className="icons">
               <div className={grid_view ? 'active' : ''}>
                 <RiLayoutGridFill />
-                <RiFileListLine onClick={() => setListview()} />
+                <RiFileListLine onClick={setListview} />
               </div>
               <div className={!grid_view ? 'active' : ''}>
-                <RiLayoutGridLine onClick={() => setGridview()} />
+                <RiLayoutGridLine onClick={setGridview} />
                 <RiFileListFill />
               </div>
             </div>
