@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { SingleProduct, About, Home, Error } from './pages';
 import { Footer, Header } from './components';
 import Sidebar from './components/Sidebar';
@@ -11,24 +11,18 @@ const App = () => {
     <Router>
       <Header />
       <Sidebar />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/products">
-          <ProductsPage />
-        </Route>
-        <Route exact path="/cart">
-          <CartPage />
-        </Route>
-        <Route exact path="/products/:id" children={<SingleProduct />}></Route>
-        <Route path="*">
-          <Error></Error>
-        </Route>
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+
+        <Route exact path="/about" element={<About />} />
+
+        <Route exact path="/products" element={<ProductsPage />} />
+
+        <Route exact path="/cart" element={<CartPage />} />
+
+        <Route exact path="/products/:id" element={<SingleProduct />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
       <Footer />
     </Router>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import Breadcrumb from '../components/Breadcrumb';
 import Button from '../components/Button';
@@ -83,7 +83,7 @@ const SingleProduct = () => {
   const { addToCart } = useGlobalContextCart();
   const [selectedColor, setSelectedColor] = useState('');
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
   const [productAmount, setProductAmount] = useState(1);
 
   useEffect(() => {
@@ -94,11 +94,10 @@ const SingleProduct = () => {
   useEffect(() => {
     if (single_product_error) {
       setTimeout(() => {
-        history.push('/');
+        history('/');
       }, 3000);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [single_product_error]);
+  }, [single_product_error, history]);
 
   if (single_product_loading) {
     return <Spinner />;
