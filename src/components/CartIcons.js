@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaShoppingCart, FaUserPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -53,13 +52,13 @@ const CartIcons = () => {
         <h4 className="cart">
           Cart
           <div className="cart-amount">
-            <FaShoppingCart></FaShoppingCart>
+            <FaShoppingCart />
           </div>
         </h4>
       </Link>
       <Link to="/cart" onClick={closeSidebar}>
         <h4 className="login">
-          Login <FaUserPlus></FaUserPlus>
+          Login <FaUserPlus />
         </h4>
       </Link>
     </Wrapper>

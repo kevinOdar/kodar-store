@@ -50,14 +50,13 @@ const Breadcrumb = ({ finalPath }) => {
         {pages.map(({ path, description }, index) => (
           <h3 key={index}>
             {path ? (
-              <Link to={path}>
+              <Link to={path} >
                 {index !== 0 ? '/ ' : ''}
                 {description}
               </Link>
             ) : (
               <>
-                {index !== 0 ? '/ ' : ''}
-                {description}
+                {'/ ' + description}
               </>
             )}
           </h3>

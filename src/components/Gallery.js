@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -34,20 +34,15 @@ const Gallery = ({ images = [{ url: '' }] }) => {
     <Wrapper>
       <img className="img-showing-product" src={shownImage} alt="main" />
       <div className="img-products">
-        {images.map(
-          (
-            { filename, url },
-            index
-          ) => (
-            <img
-              src={url}
-              className={url === shownImage ? 'selected' : ''}
-              alt={filename}
-              onClick={() => setShownImage(url)}
-              key={index}
-            />
-          )
-        )}
+        {images.map(({ filename, url }, index) => (
+          <img
+            src={url}
+            className={url === shownImage ? 'selected' : ''}
+            alt={filename}
+            onClick={() => setShownImage(url)}
+            key={index}
+          />
+        ))}
       </div>
     </Wrapper>
   );

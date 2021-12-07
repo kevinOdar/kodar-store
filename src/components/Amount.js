@@ -23,25 +23,20 @@ const Amount = ({
   max,
   selectedColor,
 }) => {
-  const decrease = (number) => {
-    if (number === 1) return 1;
-    else return productAmount - 1;
-    // number === 1 ? 1 : productAmount - 1;
-  };
-
   useEffect(() => {
     if (id) changeQuantityCartItem(id, selectedColor, productAmount);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productAmount]);
 
   return (
     <Wrapper>
       <FaMinus
         onClick={() =>
-          setProductAmount(
-            (prevValue) => (prevValue === 1 ? 1 : productAmount - 1)
-            // decrease(prevValue)
+          setProductAmount((prevValue) =>
+            prevValue === 1 ? 1 : productAmount - 1
           )
         }
+        role="icon"
         disabled={false}
       />
       <h2 className="number">{productAmount}</h2>
@@ -51,6 +46,7 @@ const Amount = ({
             prevValue === max ? max : productAmount + 1
           )
         }
+        role="icon"
       />
     </Wrapper>
   );

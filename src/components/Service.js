@@ -1,8 +1,6 @@
-import React from 'react';
-
 import styled from 'styled-components';
 
-const Div = styled.div`
+const Wrapper = styled.div`
   background-color: var(--clr-primary-7);
   padding: 2.5rem 1.3rem;
   border-radius: 0.5rem;
@@ -34,11 +32,11 @@ const Div = styled.div`
 
 const Service = ({ icon, title, text }) => {
   return (
-    <Div>
+    <Wrapper>
       <span className="icon">{icon}</span>
       <h4>{title}</h4>
       <p>{text}</p>
-    </Div>
+    </Wrapper>
   );
 };
 

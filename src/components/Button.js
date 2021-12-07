@@ -19,9 +19,9 @@ const ButtonStyle = styled.button`
   }
 `;
 
+
 const Button = ({ children }) => {
   return <ButtonStyle>{children}</ButtonStyle>;
-  // .toUpperCase()
 };
 
 export default Button;
