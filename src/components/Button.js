@@ -1,8 +1,6 @@
-import React from 'react';
-
 import styled from 'styled-components';
 
-const ButtonStyle = styled.button`
+const Wrapper = styled.button`
   background-color: var(--clr-primary-5);
   color: var(--clr-primary-10);
 
@@ -21,7 +19,7 @@ const ButtonStyle = styled.button`
 
 
 const Button = ({ children }) => {
-  return <ButtonStyle>{children}</ButtonStyle>;
+  return <Wrapper>{children}</Wrapper>;
 };
 
 export default Button;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { services } from '../utils/constants';
 import Service from '../components/Service';
 import styled from 'styled-components';

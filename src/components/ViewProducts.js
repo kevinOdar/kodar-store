@@ -1,4 +1,3 @@
-import React from 'react';
 import { useGlobalContext } from '../context/filter_context';
 import GridProducts from './GridProducts';
 import ListProducts from './ListProducts';

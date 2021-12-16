@@ -1,7 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
+
 const Wrapper = styled.div`
   button {
     padding: 0.5rem 0.7rem;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaCircle, FaCheckCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -23,6 +22,7 @@ const Colors = ({ colors, changeFilters, selection }) => {
             onClick={() =>
               changeFilters({ ...selection, selectedColor: color })
             }
+            role='icon'
           />
         ) : (
           <FaCheckCircle key={index} style={{ color }} />

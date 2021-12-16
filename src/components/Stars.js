@@ -1,4 +1,3 @@
-import React from 'react';
 import { BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FiStar } from 'react-icons/fi';
 import styled from 'styled-components';
@@ -25,21 +24,17 @@ const Stars = ({ stars, reviews }) => {
       <ul>
         {[...Array(Math.floor(stars))].map((_, index) => (
           <li key={index}>
-            <BsStarFill></BsStarFill>
+            <BsStarFill />
           </li>
         ))}
 
         <li>
-          {stars - Math.floor(stars) >= 0.5 ? (
-            <BsStarHalf></BsStarHalf>
-          ) : (
-            <FiStar></FiStar>
-          )}
+          {stars - Math.floor(stars) >= 0.5 ? <BsStarHalf /> : <FiStar />}
         </li>
 
         {[...Array(5 - Math.ceil(stars))].map((_, index) => (
           <li key={index}>
-            <FiStar></FiStar>
+            <FiStar />
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import styled from 'styled-components';
 const Wrapper = styled.div`

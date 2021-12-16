@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { useGlobalContext } from '../context/cart_context';
 import { formatPrice } from '../utils/helpers';

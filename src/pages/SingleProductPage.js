@@ -6,7 +6,7 @@ import Button from '../components/Button';
 import Colors from '../components/Colors';
 import Amount from '../components/Amount';
 import Gallery from '../components/Gallery';
-import Reviews from '../components/Reviews';
+import Stars from '../components/Stars';
 
 import { formatPrice } from '../utils/helpers';
 
@@ -124,7 +124,7 @@ const SingleProduct = () => {
           <div className="product-description">
             <h2 className="title">{name}</h2>
 
-            <Reviews stars={stars} reviews={reviews} />
+            <Stars stars={stars} reviews={reviews} />
 
             <h4 className="price">{formatPrice(price)}</h4>
             <p>{description}</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import Colors from '../components/ColorsWithParameter';
@@ -216,7 +216,6 @@ const VerticalNav = ({
           }
         />
       </form>
-      {/*  */}
       <div onClick={() => clearFilters()}>
         <Button>Clear Filters</Button>
       </div>

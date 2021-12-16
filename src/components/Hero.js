@@ -1,4 +1,3 @@
-import React from 'react';
 import heroBcg2 from '../assets/hero-bcg-2.jpeg';
 import heroBcg from '../assets/hero-bcg.jpeg';
 
@@ -7,7 +6,7 @@ import Button from '../components/Button';
 
 import { Link } from 'react-router-dom';
 
-const Main = styled.main`
+const Wrapper = styled.main`
   display: flex;
   height: 60vh;
   padding: 1rem 0;
@@ -77,7 +76,7 @@ const Main = styled.main`
 
 const Hero = () => {
   return (
-    <Main className="section-center">
+    <Wrapper className="section-center">
       <div className="hero-content">
         <h1>Design Your Comfort Zone</h1>
         <h5>
@@ -94,7 +93,7 @@ const Hero = () => {
         <img src={heroBcg} className="primary-img" alt="" />
         <img src={heroBcg2} className="secondary-img" alt="" />
       </div>
-    </Main>
+    </Wrapper>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import Contact from '../components/Contact';
+import Newsletter from '../components/Newsletter';
 import styled from 'styled-components';
 import FeaturedProducts from '../components/FeaturedProducts';
 const Wrapper = styled.div`
@@ -15,7 +15,7 @@ const Home = () => {
       <Hero />
       <FeaturedProducts />
       <Services />
-      <Contact />
+      <Newsletter />
     </Wrapper>
   );
 };

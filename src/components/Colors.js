@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaCircle, FaCheckCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useGlobalContext } from '../context/products_context';
@@ -37,6 +37,7 @@ const Colors = ({ setSelectedColor }) => {
               style={{ color, opacity: 0.5 }}
               key={index}
               onClick={() => setSelectedColorIndex(index)}
+              role='icon'
             />
           ) : (
             <FaCheckCircle key={index} style={{ color }} />

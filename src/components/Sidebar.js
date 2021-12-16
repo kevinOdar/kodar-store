@@ -1,4 +1,3 @@
-import React from 'react';
 import { CartIcons } from '.';
 import Navbar from './Navbar';
 import styled from 'styled-components';
