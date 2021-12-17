@@ -25,6 +25,7 @@ const Colors = ({ setSelectedColor }) => {
 
   useEffect(() => {
     setSelectedColor(colors[selectedColorIndex]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colors, selectedColorIndex]);
 
   return (

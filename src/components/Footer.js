@@ -28,15 +28,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Footer = () => {
-  return (
-    <Wrapper>
-      <p>
-        &copy; 2021 <span>ComfySloth</span>
-      </p>
-      <p>All rights reserved</p>
-    </Wrapper>
-  );
-};
+const Footer = () => <Wrapper>
+  <p>
+    &copy; 2021 <span>ComfySloth</span>
+  </p>
+  <p>All rights reserved</p>
+</Wrapper>
 
 export default Footer;

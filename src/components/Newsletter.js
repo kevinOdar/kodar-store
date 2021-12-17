@@ -55,23 +55,19 @@ const Wrapper = styled.div`
   }
 `;
 
-const Newsletter = () => {
-  return (
-    <Wrapper className="section-center">
-      <h3>Join our newsletter and get 20% off</h3>
-      <div className="text-container">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat sint
-          unde quaerat ratione soluta veniam provident adipisci cumque eveniet
-          tempore?
-        </p>
-        <form action="">
-          <input type="text" placeholder="Enter Email" />
-          <Button>Subscribe</Button>
-        </form>
-      </div>
-    </Wrapper>
-  );
-};
+const Newsletter = () => <Wrapper className="section-center">
+  <h3>Join our newsletter and get 20% off</h3>
+  <div className="text-container">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat sint
+      unde quaerat ratione soluta veniam provident adipisci cumque eveniet
+      tempore?
+    </p>
+    <form action="">
+      <input type="text" placeholder="Enter Email" />
+      <Button>Subscribe</Button>
+    </form>
+  </div>
+</Wrapper>
 
 export default Newsletter;

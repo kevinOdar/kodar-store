@@ -30,14 +30,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Service = ({ icon, title, text }) => {
-  return (
-    <Wrapper>
-      <span className="icon">{icon}</span>
-      <h4>{title}</h4>
-      <p>{text}</p>
-    </Wrapper>
-  );
-};
+const Service = ({ icon, title, text }) => <Wrapper>
+  <span className="icon">{icon}</span>
+  <h4>{title}</h4>
+  <p>{text}</p>
+</Wrapper>
 
 export default Service;

@@ -91,14 +91,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const ListProducts = ({ products }) => {
-  return (
-    <Wrapper>
-      {products.map((product) => (
-        <Product {...product} key={product.id} />
-      ))}
-    </Wrapper>
-  );
-};
+const ListProducts = ({ products }) => <Wrapper>
+  {products.map((product) => (
+    <Product {...product} key={product.id} />
+  ))}
+</Wrapper>
 
 export default ListProducts;

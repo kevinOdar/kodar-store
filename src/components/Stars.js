@@ -18,29 +18,25 @@ const Wrapper = styled.div`
   }
 `;
 
-const Stars = ({ stars, reviews }) => {
-  return (
-    <Wrapper>
-      <ul>
-        {[...Array(Math.floor(stars))].map((_, index) => (
-          <li key={index}>
-            <BsStarFill />
-          </li>
-        ))}
+const Stars = ({ stars, reviews }) => <Wrapper>
+  <ul>
+    {[...Array(Math.floor(stars))].map((_, index) => (
+      <li key={index}>
+        <BsStarFill />
+      </li>
+    ))}
 
-        <li>
-          {stars - Math.floor(stars) >= 0.5 ? <BsStarHalf /> : <FiStar />}
-        </li>
+    <li>
+      {stars - Math.floor(stars) >= 0.5 ? <BsStarHalf /> : <FiStar />}
+    </li>
 
-        {[...Array(5 - Math.ceil(stars))].map((_, index) => (
-          <li key={index}>
-            <FiStar />
-          </li>
-        ))}
-      </ul>
-      <div className="reviews-amount">({reviews} customer reviews)</div>
-    </Wrapper>
-  );
-};
+    {[...Array(5 - Math.ceil(stars))].map((_, index) => (
+      <li key={index}>
+        <FiStar />
+      </li>
+    ))}
+  </ul>
+  <div className="reviews-amount">({reviews} customer reviews)</div>
+</Wrapper>
 
 export default Stars;

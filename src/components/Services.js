@@ -53,26 +53,22 @@ const Wrapper = styled.div`
   }
 `;
 
-const Services = () => {
-  return (
-    <Wrapper>
-      <div className="section-center">
-        <article className="services-title">
-          <h3 className="title">Custom Furniture Built Only For You</h3>
-          <p className="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum debitis consectetur reprehenderit non aliquam voluptates
-            dolore aut vero consequuntur.
-          </p>
-        </article>
-        <div className="services">
-          {services.map((service) => (
-            <Service {...service} key={service.id}></Service>
-          ))}
-        </div>
-      </div>
-    </Wrapper>
-  );
-};
+const Services = () => <Wrapper>
+  <div className="section-center">
+    <article className="services-title">
+      <h3 className="title">Custom Furniture Built Only For You</h3>
+      <p className="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+        dolorum debitis consectetur reprehenderit non aliquam voluptates
+        dolore aut vero consequuntur.
+      </p>
+    </article>
+    <div className="services">
+      {services.map((service) => (
+        <Service {...service} key={service.id}></Service>
+      ))}
+    </div>
+  </div>
+</Wrapper>
 
 export default Services;

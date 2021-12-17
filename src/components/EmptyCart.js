@@ -8,15 +8,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const EmptyCart = () => {
-  return (
-    <Wrapper className="page-100  text-center">
-      <h1>Your cart is empty</h1>
-      <Link to="/products">
-        <Button>FILL IT</Button>
-      </Link>
-    </Wrapper>
-  );
-};
+const EmptyCart = () => <Wrapper className="page-100  text-center">
+  <h1>Your cart is empty</h1>
+  <Link to="/products">
+    <Button>FILL IT</Button>
+  </Link>
+</Wrapper>
 
 export default EmptyCart;

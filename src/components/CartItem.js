@@ -18,6 +18,7 @@ const CartItem = ({
 
   useEffect(() => {
     setProductAmount(quantity);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [removeItem]);
 
   return (

@@ -78,14 +78,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const GridProducts = ({ products }) => {
-  return (
-    <Wrapper>
-      {products.map((product) => (
-        <Product {...product} key={product.id} />
-      ))}
-    </Wrapper>
-  );
-};
+const GridProducts = ({ products }) => <Wrapper>
+  {products.map((product) => (
+    <Product {...product} key={product.id} />
+  ))}
+</Wrapper>
 
 export default GridProducts;

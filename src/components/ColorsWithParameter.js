@@ -11,25 +11,21 @@ const Wrapper = styled.div`
   }
 `;
 
-const Colors = ({ colors, changeFilters, selection }) => {
-  return (
-    <Wrapper className="color-icon">
-      {colors.map((color, index) =>
-        selection.selectedColor !== color ? (
-          <FaCircle
-            style={{ color, opacity: 0.5 }}
-            key={index}
-            onClick={() =>
-              changeFilters({ ...selection, selectedColor: color })
-            }
-            role='icon'
-          />
-        ) : (
-          <FaCheckCircle key={index} style={{ color }} />
-        )
-      )}
-    </Wrapper>
-  );
-};
+const Colors = ({ colors, changeFilters, selection }) => <Wrapper className="color-icon">
+  {colors.map((color, index) =>
+    selection.selectedColor !== color ? (
+      <FaCircle
+        style={{ color, opacity: 0.5 }}
+        key={index}
+        onClick={() =>
+          changeFilters({ ...selection, selectedColor: color })
+        }
+        role='icon'
+      />
+    ) : (
+      <FaCheckCircle key={index} style={{ color }} />
+    )
+  )}
+</Wrapper>
 
 export default Colors;

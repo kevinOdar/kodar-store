@@ -3,8 +3,6 @@ import styled from 'styled-components';
 const Wrapper = styled.button`
   background-color: var(--clr-primary-5);
   color: var(--clr-primary-10);
-
-
   border-radius: var(--radius);
   border: 0px;
   cursor: pointer;
@@ -16,7 +14,6 @@ const Wrapper = styled.button`
     color: var(--clr-primary-2);
   }
 `;
-
 
 const Button = ({ children }) => {
   return <Wrapper>{children}</Wrapper>;

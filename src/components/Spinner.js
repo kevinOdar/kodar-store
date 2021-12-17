@@ -23,13 +23,8 @@ const Wrapper = styled.div`
   }
 `;
 
-
-const Spinner = () => {
-  return (
-    <Wrapper>
-      <ImSpinner9 className="spinner" />
-    </Wrapper>
-  )
-}
+const Spinner = () => <Wrapper>
+  <ImSpinner9 className="spinner" />
+</Wrapper>
 
 export default Spinner

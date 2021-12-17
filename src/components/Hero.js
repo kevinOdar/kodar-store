@@ -74,27 +74,23 @@ const Wrapper = styled.main`
   }
 `;
 
-const Hero = () => {
-  return (
-    <Wrapper className="section-center">
-      <div className="hero-content">
-        <h1>Design Your Comfort Zone</h1>
-        <h5>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
-          sed omnis corporis doloremque possimus velit! Repudiandae nisi odit,
-          aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
-          alias?
-        </h5>
-        <Link to="/products">
-          <Button>SHOP NOW</Button>
-        </Link>
-      </div>
-      <div className="img-container">
-        <img src={heroBcg} className="primary-img" alt="" />
-        <img src={heroBcg2} className="secondary-img" alt="" />
-      </div>
-    </Wrapper>
-  );
-};
+const Hero = () => <Wrapper className="section-center">
+  <div className="hero-content">
+    <h1>Design Your Comfort Zone</h1>
+    <h5>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
+      sed omnis corporis doloremque possimus velit! Repudiandae nisi odit,
+      aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
+      alias?
+    </h5>
+    <Link to="/products">
+      <Button>SHOP NOW</Button>
+    </Link>
+  </div>
+  <div className="img-container">
+    <img src={heroBcg} className="primary-img" alt="" />
+    <img src={heroBcg2} className="secondary-img" alt="" />
+  </div>
+</Wrapper>
 
 export default Hero;
