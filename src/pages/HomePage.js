@@ -8,16 +8,11 @@ const Wrapper = styled.div`
   position: relative;
 `
 
-const Home = () => {
-
-  return (
-    <Wrapper>
-      <Hero />
-      <FeaturedProducts />
-      <Services />
-      <Newsletter />
-    </Wrapper>
-  );
-};
+const Home = () => <Wrapper>
+  <Hero />
+  <FeaturedProducts />
+  <Services />
+  <Newsletter />
+</Wrapper>
 
 export default Home;

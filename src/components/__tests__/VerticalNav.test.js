@@ -24,7 +24,7 @@ describe('VerticalNav test', () => {
   });
 
   it('Clicking on clear filters', () => {
-    userEvent.click(screen.getByText(/Clear Filters/));
+    userEvent.click(screen.getByText(/Clear filters/));
     expect(mClearFilters).toHaveBeenCalledTimes(1);
   });
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from './Button';
+import Button from './shared/Button';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/products_context';
 import Spinner from './Spinner';
@@ -9,19 +9,14 @@ import GridProducts from './GridProducts';
 const Wrapper = styled.div`
   background-color: var(--clr-grey-10);
   text-align: center;
-  padding: 2rem 0;
+  padding: 3.5rem 0;
 
   .title {
-    padding: 4rem 0;
+    padding-bottom: 3.5rem;
 
     .underline {
       height: 4px;
     }
-  }
-
-  button {
-    margin: 2.5rem 0;
-    padding: 0.5rem 0.9rem;
   }
 `;
 
@@ -46,7 +41,7 @@ const FeaturedProducts = () => {
         </div>
         <GridProducts products={featured_products.slice(0, 3)} />
         <Link to="/products">
-          <Button>All products</Button>
+          <Button type='primary' size='medium' label='All products' />
         </Link>
       </div>
     </Wrapper>

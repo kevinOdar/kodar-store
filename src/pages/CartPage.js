@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Breadcrumb from '../components/Breadcrumb';
-import Button from '../components/Button';
+import Button from '../components/shared/Button';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/cart_context';
 import CartItem from '../components/CartItem';
@@ -28,88 +28,6 @@ const Wrapper = styled.div`
     }
   }
 
-  .cart-body {
-    .cart-item {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      align-items: center;
-
-      > *:first-child {
-        flex-basis: 35%;
-        text-align: start;
-      }
-      > * {
-        flex-basis: 40%;
-        text-align: center;
-      }
-      > *:last-child {
-        flex-basis: 35%;
-      }
-
-      margin: 3rem 0;
-
-      button {
-        border: 0;
-        background-color: white;
-
-        svg {
-          color: var(--clr-red-dark);
-          font-size: 1.5rem;
-        }
-      }
-
-      .item {
-        display: flex;
-
-        img {
-          width: 100px;
-        }
-
-        .details {
-          padding: 0.8rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-start;
-
-          h5 {
-            margin: 0.1rem 0;
-          }
-        }
-      }
-
-      .color {
-        font-size: 0.8rem;
-        span {
-          /* background-color: var(--clr-red-dark);  */
-          width: 12px;
-          height: 12px;
-          display: inline-block;
-          border-radius: 50%;
-        }
-      }
-
-      .amount {
-        > * {
-          justify-content: center;
-          column-gap: 1rem;
-          svg {
-            font-size: 1rem;
-          }
-          h2 {
-            font-size: 1.5rem;
-          }
-        }
-      }
-
-      .price {
-        color: var(--clr-primary-5);
-      }
-    }
-  }
-
   .border-bottom {
     border-bottom: 1px solid var(--clr-grey-6);
   }
@@ -118,16 +36,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
-
-    button {
-      padding: 0.4rem 0.3rem;
-    }
-
-    div {
-      button:nth-child(1) {
-        background-color: black;
-      }
-    }
   }
 
   .total-order-container {
@@ -138,11 +46,6 @@ const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       width: 50%;
-
-      > button {
-        margin: 1rem 0;
-        padding: 0.5rem 0;
-      }
 
       .total-order {
         border: 1px solid var(--clr-grey-6);
@@ -202,31 +105,8 @@ const Wrapper = styled.div`
       }
     }
 
-    .cart-body {
-      .cart-item {
-        > *:first-child {
-          flex-basis: 40%;
-        }
-        > * {
-          flex-basis: 15%;
-          text-align: center;
-        }
-        > *:last-child {
-          flex-basis: 5%;
-        }
-        .color {
-          span {
-            border-radius: 0.2rem;
-          }
-        }
-      }
-    }
-
     .show {
       display: block;
-    }
-
-    .total-order {
     }
 
     .total-order-container {
@@ -249,17 +129,25 @@ const CartPage = () => {
                 <h5 key={index}>{item}</h5>
               ))}
             </div>
-            <div className="cart-body border-bottom">
+            <div className="border-bottom">
               {products.map((product, index) => (
                 <CartItem {...product} key={index} />
               ))}
             </div>
             <div className="buttons">
               <Link to="/products">
-                <Button>Continue Shopping</Button>
+                <Button
+                  type="primary"
+                  size="medium"
+                  label="Continue Shopping"
+                />
               </Link>
               <div onClick={clearCart}>
-                <Button>Clear Shopping Cart</Button>
+                <Button
+                  type="secondary"
+                  size="medium"
+                  label="Clear Shopping Cart"
+                />
               </div>
             </div>
             <div className="total-order-container">
@@ -273,14 +161,12 @@ const CartPage = () => {
                   </h5>
                   <hr />
                   <h4>
-                    Order Total :{' '}
-                    <span>{formatPrice(subtotal + shipping)}</span>
+                    Order Total :<span>{formatPrice(subtotal + shipping)}</span>
                   </h4>
                 </div>
-                <Button>LOGIN</Button>
+                <Button type="primary" size="medium" label="LOGIN" />
               </div>
             </div>
-            )
           </Wrapper>
         </>
       ) : (

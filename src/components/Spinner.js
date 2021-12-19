@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 `;
 
 const Spinner = () => <Wrapper>
-  <ImSpinner9 className="spinner" />
+  <ImSpinner9 className="spinner" alt='Loading...' />
 </Wrapper>
 
 export default Spinner

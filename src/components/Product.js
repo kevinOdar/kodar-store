@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import styled from 'styled-components';
 import { formatPrice } from '../utils/helpers';
-import Button from './Button';
+import Button from './shared/Button';
 
 const Wrapper = styled.div``;
 
@@ -21,7 +21,7 @@ const Product = ({ id, image, name, price, description }) => {
         <p className="product-price">{formatPrice(price)}</p>
         <p className="product-descr">{description.slice(0, 150) + '...'}</p>
         <Link to={`/products/${id}`}>
-          <Button>DETAILS</Button>
+          <Button type='primary' size='small' label='DETAILS' />
         </Link>
       </div>
     </Wrapper>

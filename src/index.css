@@ -135,8 +135,9 @@ p {
 
 /* section */
 .section {
-  padding: 5rem 0;
+  padding: 2rem 0;
 }
+
 .section-center {
   width: 90vw;
   margin: 0 auto;

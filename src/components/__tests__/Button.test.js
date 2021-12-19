@@ -10,7 +10,7 @@ describe('Button test', () => {
 
   it('The Button has text', () => {
     const mText = 'Test text';
-    render(<Button children={mText} />);
+    render(<Button label={mText} />);
     expect(screen.getByRole('button')).toHaveTextContent(mText);
   });
 });

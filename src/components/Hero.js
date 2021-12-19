@@ -2,7 +2,7 @@ import heroBcg2 from '../assets/hero-bcg-2.jpeg';
 import heroBcg from '../assets/hero-bcg.jpeg';
 
 import styled from 'styled-components';
-import Button from '../components/Button';
+import Button from '../components/shared/Button';
 
 import { Link } from 'react-router-dom';
 
@@ -26,10 +26,6 @@ const Wrapper = styled.main`
 
   .img-container {
     display: none;
-  }
-
-  button {
-    padding: 1rem 2rem;
   }
 
   @media screen and (min-width: 760px) {
@@ -84,7 +80,7 @@ const Hero = () => <Wrapper className="section-center">
       alias?
     </h5>
     <Link to="/products">
-      <Button>SHOP NOW</Button>
+      <Button type='primary' size='large' label='SHOP NOW' />
     </Link>
   </div>
   <div className="img-container">

@@ -3,7 +3,105 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useGlobalContext } from '../context/cart_context';
 import { formatPrice } from '../utils/helpers';
 import Amount from './Amount';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Wrapper = styled.article`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin: 3rem 0;
+
+  > *:first-child {
+    flex-basis: 35%;
+    text-align: start;
+  }
+  > * {
+    flex-basis: 40%;
+    text-align: center;
+  }
+  > *:last-child {
+    flex-basis: 35%;
+  }
+
+  //! Revisar luego de crear test
+  button {
+    border: 0;
+    background-color: white;
+
+    svg {
+      color: var(--clr-red-dark);
+      font-size: 1.5rem;
+    }
+  }
+
+  .item {
+    display: flex;
+
+    img {
+      width: 100px;
+    }
+
+    .details {
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      h5 {
+        margin: 0.1rem 0;
+      }
+    }
+  }
+
+  .color {
+    font-size: 0.8rem;
+    span {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      border-radius: 50%;
+    }
+  }
+
+  .amount {
+    > * {
+      justify-content: center;
+      column-gap: 1rem;
+      svg {
+        font-size: 1rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .price {
+    color: var(--clr-primary-5);
+  }
+
+  @media screen and (min-width: 760px) {
+    > *:first-child {
+      flex-basis: 40%;
+    }
+    > * {
+      flex-basis: 15%;
+      text-align: center;
+    }
+    > *:last-child {
+      flex-basis: 5%;
+    }
+    .color {
+      span {
+        border-radius: 0.2rem;
+      }
+    }
+  }
+`;
 
 const CartItem = ({
   id,
@@ -23,7 +121,7 @@ const CartItem = ({
   }, [removeItem]);
 
   return (
-    <article className="cart-item">
+    <Wrapper>
       <div className="item">
         <img src={images[0].thumbnails.large.url} alt="cart-thumbnail" />
         <div className="details">
@@ -50,7 +148,7 @@ const CartItem = ({
       <button onClick={() => removeItem(id, selectedColor)}>
         <AiFillDelete />
       </button>
-    </article>
+    </Wrapper>
   );
 };
 
@@ -62,6 +160,6 @@ Amount.propTypes = {
   quantity: PropTypes.number,
   stock: PropTypes.number,
   selectedColor: PropTypes.string,
-}
+};
 
 export default CartItem;

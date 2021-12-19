@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import Breadcrumb from '../components/Breadcrumb';
-import Button from '../components/Button';
+import Button from '../components/shared/Button';
 import Colors from '../components/Colors';
 import Amount from '../components/Amount';
 import Gallery from '../components/Gallery';
@@ -18,11 +18,6 @@ import Spinner from '../components/Spinner';
 import Error from '../components/Error';
 
 const Wrapper = styled.div`
-  button {
-    padding: 0.7rem 0.8rem;
-    margin: 1.5rem 0;
-  }
-
   .product {
     display: flex;
     flex-direction: column;
@@ -113,9 +108,9 @@ const SingleProduct = () => {
   return (
     <>
       <Breadcrumb finalPath={name} />
-      <Wrapper className="section-center">
+      <Wrapper className="section section-center">
         <Link to="/products">
-          <Button>BACK TO PRODUCTS</Button>
+          <Button type='primary' size='medium' label='BACK TO PRODUCTS' />
         </Link>
 
         <div className="product">
@@ -155,7 +150,7 @@ const SingleProduct = () => {
                     addToCart(product, selectedColor, productAmount)
                   }
                 >
-                  <Button>ADD TO CART</Button>
+                  <Button type='primary' size='medium' label='ADD TO CART' />
                 </Link>
               </>
             )}

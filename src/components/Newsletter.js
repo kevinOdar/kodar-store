@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from './Button';
+import Button from './shared/Button';
 
 const Wrapper = styled.div`
   padding: 3.5rem 0;
@@ -65,7 +65,7 @@ const Newsletter = () => <Wrapper className="section-center">
     </p>
     <form action="">
       <input type="text" placeholder="Enter Email" />
-      <Button>Subscribe</Button>
+      <Button type='primary' size='large' label='Subscribe' />
     </form>
   </div>
 </Wrapper>

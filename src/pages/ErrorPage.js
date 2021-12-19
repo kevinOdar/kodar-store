@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../components/Button';
+import Button from '../components/shared/Button';
 
 const Wrapper = styled.div`
   background-color: var(--clr-primary-10);
@@ -11,23 +12,16 @@ const Wrapper = styled.div`
   h1 {
     font-size: 10rem;
   }
-
-  button {
-    padding: 0.6rem;
-    margin: 1rem;
-  }
 `;
 
-const Error = () => {
-  return (
-    <Wrapper className="page-100">
-      <section className="title">
-        <h1>404</h1>
-        <h3>Sorry, the page you tried cannot be found</h3>
-        <Button>BACK HOME</Button>
-      </section>
-    </Wrapper>
-  );
-};
+const Error = () => <Wrapper className="page-100">
+  <section className="title">
+    <h1>404</h1>
+    <h3>Sorry, the page you tried cannot be found</h3>
+    <Link to="/">
+      <Button type='primary' size='medium' label='BACK HOME' />
+    </Link>
+  </section>
+</Wrapper>
 
 export default Error;
