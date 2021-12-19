@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
+
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -51,5 +53,14 @@ const Amount = ({
     </Wrapper>
   );
 };
+
+Amount.propTypes = {
+  productAmount: PropTypes.number,
+  setProductAmount: PropTypes.func,
+  id: PropTypes.string,
+  changeQuantityCartItem: PropTypes.func,
+  max: PropTypes.number,
+  selectedColor: PropTypes.string,
+}
 
 export default Amount;

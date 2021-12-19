@@ -3,6 +3,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useGlobalContext } from '../context/cart_context';
 import { formatPrice } from '../utils/helpers';
 import Amount from './Amount';
+import PropTypes from 'prop-types'
 
 const CartItem = ({
   id,
@@ -37,7 +38,6 @@ const CartItem = ({
       <h5 className="price show">{formatPrice(price)}</h5>
       <div className="amount">
         <Amount
-          // productAmount={quantity}
           productAmount={productAmount}
           setProductAmount={setProductAmount}
           id={id}
@@ -46,7 +46,6 @@ const CartItem = ({
           changeQuantityCartItem={changeQuantityCartItem}
         />
       </div>
-      {/* <h5 className="subtotal show">{formatPrice(price * quantity)}</h5> */}
       <h5 className="subtotal show">{formatPrice(price * productAmount)}</h5>
       <button onClick={() => removeItem(id, selectedColor)}>
         <AiFillDelete />
@@ -54,5 +53,15 @@ const CartItem = ({
     </article>
   );
 };
+
+Amount.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  images: PropTypes.array,
+  price: PropTypes.number,
+  quantity: PropTypes.number,
+  stock: PropTypes.number,
+  selectedColor: PropTypes.string,
+}
 
 export default CartItem;

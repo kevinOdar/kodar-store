@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   background-color: var(--clr-primary-10);
@@ -64,5 +65,9 @@ const Breadcrumb = ({ finalPath }) => {
     </Wrapper>
   );
 };
+
+Breadcrumb.propTypes = {
+  finalPath: PropTypes.string,
+}
 
 export default Breadcrumb;
