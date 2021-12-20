@@ -8,7 +8,7 @@ import { mProductContext } from '../../utils/mock';
 describe('Product test', () => {
   it('Details button on the product should redirect to the specific product page', () => {
     const history = createMemoryHistory();
-    const firstProduct = mProductContext.featured_products[0];
+    const firstProduct = mProductContext.product;
     render(
       <Router location={history.location} navigator={history}>
         <Product {...firstProduct} />

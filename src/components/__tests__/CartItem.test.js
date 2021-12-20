@@ -10,12 +10,11 @@ describe('Cart item test', () => {
   it('We can remove an item from the cart', () => {
     const quantity = 4;
     const history = createMemoryHistory();
-    const firstProduct = mProductContext.featured_products[0];
     render(
       <CartContext.Provider value={{ ...mCartContext }}>
         <Router location={history.location} navigator={history}>
           <CartItem
-            {...firstProduct}
+            {...mProductContext.product}
             selectedColor={mFilterContext.selection.selectedColor}
             quantity={quantity}
           />

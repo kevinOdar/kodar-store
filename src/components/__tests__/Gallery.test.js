@@ -6,7 +6,7 @@ import { mProductContext } from '../../utils/mock';
 
 describe('Gallery test', () => {
   it('Changing an image selecting another', () => {
-    const firstProduct = mProductContext.featured_products[0];
+    const firstProduct = mProductContext.product;
     render(<Gallery images={firstProduct.images} />);
     const mainImage = screen.getByAltText('main');
     expect(mainImage).toBeInTheDocument();

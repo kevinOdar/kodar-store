@@ -1,14 +1,4 @@
 //? m for mock
-const mSidebarContext = {
-  closeSidebar: jest.fn(),
-  isSidebarOpen: false,
-};
-
-const mCartContext = {
-  removeItem: jest.fn(),
-  changeQuantityCartItem: jest.fn(),
-};
-
 const mProducts = [
   {
     id: 'recd1jIVIEChmiwhe1',
@@ -264,11 +254,27 @@ const mProducts = [
   },
 ];
 
+const mSidebarContext = {
+  closeSidebar: jest.fn(),
+  isSidebarOpen: false,
+};
+
+const mCartContext = {
+  removeItem: jest.fn(),
+  clearCart: jest.fn(),
+  addToCart: jest.fn(),
+  changeQuantityCartItem: jest.fn(),
+  products: mProducts,
+};
+
 const mProductContext = {
-  product: { colors: ['#000', '#00ff00', '#0000ff'] },
+  product: mProducts[0],
+  fetchProduct: jest.fn(),
   featured_products: mProducts,
   products_loading: true,
   products_error: false,
+  single_product_error: false,
+  single_product_loading: false,
 };
 
 const mFilterContext = {
