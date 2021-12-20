@@ -1,5 +1,3 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/shared/Button';
 
@@ -18,9 +16,7 @@ const Error = () => <Wrapper className="page-100">
   <section className="title">
     <h1>404</h1>
     <h3>Sorry, the page you tried cannot be found</h3>
-    <Link to="/">
-      <Button type='primary' size='medium' label='BACK HOME' />
-    </Link>
+    <Button type='primary' size='medium' linkTo="/" label='BACK HOME' />
   </section>
 </Wrapper>
 

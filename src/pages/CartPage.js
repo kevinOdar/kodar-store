@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 import Breadcrumb from '../components/Breadcrumb';
 import Button from '../components/shared/Button';
-import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/cart_context';
 import CartItem from '../components/CartItem';
 import { formatPrice } from '../utils/helpers';
@@ -135,20 +133,18 @@ const CartPage = () => {
               ))}
             </div>
             <div className="buttons">
-              <Link to="/products">
-                <Button
-                  type="primary"
-                  size="medium"
-                  label="Continue Shopping"
-                />
-              </Link>
-              <div onClick={clearCart}>
-                <Button
-                  type="secondary"
-                  size="medium"
-                  label="Clear Shopping Cart"
-                />
-              </div>
+              <Button
+                type="primary"
+                size="medium"
+                linkTo="/products"
+                label="Continue shopping"
+              />
+              <Button
+                type="secondary"
+                size="medium"
+                label="Clear shopping cart"
+                onClick={clearCart}
+              />
             </div>
             <div className="total-order-container">
               <div>

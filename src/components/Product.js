@@ -20,9 +20,7 @@ const Product = ({ id, image, name, price, description }) => {
         <p className="product-name">{name}</p>
         <p className="product-price">{formatPrice(price)}</p>
         <p className="product-descr">{description.slice(0, 150) + '...'}</p>
-        <Link to={`/products/${id}`}>
-          <Button type='primary' size='small' label='DETAILS' />
-        </Link>
+        <Button type='primary' size='small' linkTo={`/products/${id}`} label='DETAILS' />
       </div>
     </Wrapper>
   );

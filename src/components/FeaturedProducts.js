@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Button from './shared/Button';
-import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/products_context';
 import Spinner from './Spinner';
 import Error from './Error';
@@ -40,9 +39,7 @@ const FeaturedProducts = () => {
           <div className="underline"></div>
         </div>
         <GridProducts products={featured_products.slice(0, 3)} />
-        <Link to="/products">
-          <Button type='primary' size='medium' label='All products' />
-        </Link>
+        <Button type='primary' size='medium' linkTo="/products" label='All products' />
       </div>
     </Wrapper>
   );

@@ -55,12 +55,6 @@ const Wrapper = styled.div`
     margin: 0 0.5rem;
   }
 
-  button {
-    padding: 0.2rem 0.5rem;
-    text-transform: lowercase;
-    display: block;
-  }
-
   .color-icon {
     font-size: medium;
 
@@ -216,9 +210,7 @@ const VerticalNav = ({
           }
         />
       </form>
-      <div onClick={() => clearFilters()}>
-        <Button type='secondary' size='small' label='Clear filters' />
-      </div>
+      <Button type='secondary' size='small' label='Clear filters' onClick={clearFilters} />
     </Wrapper>
   );
 };

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import Breadcrumb from '../components/Breadcrumb';
 import Button from '../components/shared/Button';
@@ -109,9 +109,12 @@ const SingleProduct = () => {
     <>
       <Breadcrumb finalPath={name} />
       <Wrapper className="section section-center">
-        <Link to="/products">
-          <Button type='primary' size='medium' label='BACK TO PRODUCTS' />
-        </Link>
+        <Button
+          type="primary"
+          size="medium"
+          linkTo="/products"
+          label="BACK TO PRODUCTS"
+        />
 
         <div className="product">
           <Gallery images={images} />
@@ -144,14 +147,15 @@ const SingleProduct = () => {
                   setProductAmount={setProductAmount}
                   max={stock}
                 />
-                <Link
-                  to="/cart"
+                <Button
+                  type="primary"
+                  size="medium"
+                  linkTo="/cart"
                   onClick={() =>
                     addToCart(product, selectedColor, productAmount)
                   }
-                >
-                  <Button type='primary' size='medium' label='ADD TO CART' />
-                </Link>
+                  label="ADD TO CART"
+                />
               </>
             )}
           </div>

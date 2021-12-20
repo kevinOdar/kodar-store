@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.button`
   border-radius: var(--radius);
@@ -34,24 +35,33 @@ const Wrapper = styled.button`
   }
 `;
 
-const Button = ({ type, size, onClick, label }) => {
-  return (
-    <Wrapper className={`button--${type} button--${size}`}>{label}</Wrapper>
+const Button = ({ type, size, onClick, linkTo, label }) => {
+  return linkTo ? (
+    <Link to={linkTo}>
+      <Wrapper className={`button--${type} button--${size}`} onClick={onClick}>
+        {label}
+      </Wrapper>
+    </Link>
+  ) : (
+    <Wrapper className={`button--${type} button--${size}`} onClick={onClick}>
+      {label}
+    </Wrapper>
   );
 };
 
 Button.propTypes = {
   type: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  // children: PropTypes.string.isRequired,
-  label: PropTypes.string,
   onClick: PropTypes.func,
+  linkTo: PropTypes.string,
+  label: PropTypes.string,
 };
 
 Button.defaultProps = {
   type: 'primary',
   size: 'medium',
   onClick: undefined,
+  linkTo: undefined,
   label: '',
 };
 

@@ -65,7 +65,7 @@ const Newsletter = () => <Wrapper className="section-center">
     </p>
     <form action="">
       <input type="text" placeholder="Enter Email" />
-      <Button type='primary' size='large' label='Subscribe' />
+      <Button type='primary' size='medium' label='Subscribe' />
     </form>
   </div>
 </Wrapper>

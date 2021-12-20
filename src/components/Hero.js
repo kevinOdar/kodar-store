@@ -4,8 +4,6 @@ import heroBcg from '../assets/hero-bcg.jpeg';
 import styled from 'styled-components';
 import Button from '../components/shared/Button';
 
-import { Link } from 'react-router-dom';
-
 const Wrapper = styled.main`
   display: flex;
   height: 60vh;
@@ -79,9 +77,7 @@ const Hero = () => <Wrapper className="section-center">
       aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
       alias?
     </h5>
-    <Link to="/products">
-      <Button type='primary' size='large' label='SHOP NOW' />
-    </Link>
+    <Button type='primary' size='large' linkTo="/products" label='SHOP NOW' />
   </div>
   <div className="img-container">
     <img src={heroBcg} className="primary-img" alt="" />
