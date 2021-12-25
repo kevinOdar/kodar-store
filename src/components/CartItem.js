@@ -107,7 +107,7 @@ const CartItem = ({
   id,
   name,
   price,
-  images,
+  image,
   stock,
   selectedColor,
   quantity,
@@ -123,7 +123,7 @@ const CartItem = ({
   return (
     <Wrapper>
       <div className="item">
-        <img src={images[0].thumbnails.large.url} alt="cart-thumbnail" />
+        <img src={image} alt="cart-thumbnail" />
         <div className="details">
           <h5 className="bold">{name}</h5>
           <h5 className="color">
