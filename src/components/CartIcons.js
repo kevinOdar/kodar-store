@@ -1,4 +1,4 @@
-import { FaShoppingCart, FaUserPlus } from 'react-icons/fa';
+import { FaShoppingCart, FaUserPlus, FaUserMinus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useGlobalContext } from '../context/sidebar_context';
@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const CartIcons = () => {
+const CartIcons = ({ user }) => {
   const { closeSidebar } = useGlobalContext();
   return (
     <Wrapper className="active">
@@ -57,9 +57,15 @@ const CartIcons = () => {
         </h4>
       </Link>
       <Link to="/cart" onClick={closeSidebar}>
-        <h4 className="login">
-          Login <FaUserPlus />
-        </h4>
+        {user ? (
+          <h4 className="login">
+            Logout <FaUserMinus />
+          </h4>
+        ) : (
+          <h4 className="login">
+            Login <FaUserPlus />
+          </h4>
+        )}
       </Link>
     </Wrapper>
   );

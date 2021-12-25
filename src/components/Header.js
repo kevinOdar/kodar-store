@@ -3,9 +3,9 @@ import logo from '../assets/logo.png';
 import { FaBars } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import { CartIcons } from '../components';
-import Navbar from './Navbar';
+import { CartIcons, Navbar } from './';
 import { useGlobalContext } from '../context/sidebar_context';
 
 const Wrapper = styled.header`
@@ -59,7 +59,7 @@ const Wrapper = styled.header`
   }
 `;
 
-const Header = () => {
+const Header = ({ user }) => {
   const { openSidebar, closeSidebar, isSidebarOpen } = useGlobalContext();
 
   return (
@@ -69,7 +69,7 @@ const Header = () => {
           <img src={logo} alt="" className="logo" />
         </Link>
         <Navbar />
-        <CartIcons />
+        <CartIcons user={user} />
 
         <button className="hamburguer-btn" type="button">
           {!isSidebarOpen ? (
@@ -81,6 +81,14 @@ const Header = () => {
       </div>
     </Wrapper>
   );
+};
+
+Header.propTypes = {
+  user: PropTypes.shape({}),
+};
+
+Header.defaultProps = {
+  user: null,
 };
 
 export default Header;

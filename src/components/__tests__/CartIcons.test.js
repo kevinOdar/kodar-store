@@ -19,4 +19,16 @@ describe('CartIcons test', () => {
 
     expect(screen.getAllByRole('link')).toHaveLength(2);
   });
+
+  it('Rendered with an user', () => {
+    const history = createMemoryHistory();
+    render(
+      <SidebarContext.Provider value={{ ...mSidebarContext }}>
+        <Router location={history.location} navigator={history}>
+          <CartIcons user={{}} />
+        </Router>
+      </SidebarContext.Provider>
+    );
+
+  });
 });
