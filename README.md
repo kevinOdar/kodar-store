@@ -39,3 +39,7 @@ run on console: `npm test -- --coverage`
 ## Design Systems
 
 run on console: `npm run storybook`
+
+## Deployment
+
+This project is deployed on https://kodar-store.vercel.app/
