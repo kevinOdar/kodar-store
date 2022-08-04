@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "73bce539-f88a-4fd4-a372-5caef9f84ff7",
+		"name": "FASE 1 DEV GDS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8693196"
+	},
+	"item": [
+		{
+			"name": "Car ind - Example #1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is applicaton json\", function () {\r",
+							"  pm.response.to.be.header(\"Content-Type\", \"application/pdf; charset=UTF-8\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/pdf",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"parameters\":[{\r\n  \"paramName\": \"string_param1\",\r\n  \"paramValue\": 100000005045\r\n}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://oic-gs-dev-ctdev01lhppoc-ia.integration.ocp.oraclecloud.com/ic/api/integration/v1/flows/rest/JASPER_INSOR/1.0/Car_Ind_P001_P003.pdf",
+					"protocol": "https",
+					"host": [
+						"oic-gs-dev-ctdev01lhppoc-ia",
+						"integration",
+						"ocp",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"ic",
+						"api",
+						"integration",
+						"v1",
+						"flows",
+						"rest",
+						"JASPER_INSOR",
+						"1.0",
+						"Car_Ind_P001_P003.pdf"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "insis.api123",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "insis.api",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
