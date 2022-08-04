@@ -22,7 +22,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Response time is less than 1000ms\", function () {\r",
-							"  pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(1000);\r",
 							"});"
 						],
 						"type": "text/javascript"
