@@ -28,4 +28,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: run docker command on VM
         run: |
-          docker run -v $(pwd)/test:/etc/newman -t postman/newman:latest run "HttpbinForNewman.json" --reporters="cli"
+          docker run -v $(pwd)/tests:/etc/newman -t postman/newman:latest run "FASE-1-DEV-GDS.postman_collection.json" --reporters="cli"
